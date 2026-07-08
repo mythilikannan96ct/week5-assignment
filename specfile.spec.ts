@@ -3,7 +3,7 @@ import leadData from './data/createLeadData.json'
 
 test.describe('Create Lead - Data Parameterization', () => {
 
-  for (const lead of leadData) {   // loop var use pannunga, hardcoded index vendam!
+  for (const lead of leadData) { 
     test(`Create Lead for ${lead.company}`, async ({ page }) => {
 
       await page.goto('http://leaftaps.com/opentaps/control/main');
@@ -32,7 +32,7 @@ test.describe('Create Lead - Data Parameterization', () => {
       console.log('Marketing Campaign values:', campaignOptions);
 
       // Industry - by index
-      await page.locator('#createLeadForm_industryEnumId').selectOption({ index: 3 }); // General Services - verify index in your app
+      await page.locator('#createLeadForm_industryEnumId').selectOption({ index: 3 }); 
 
       // Preferred Currency - INR
       await page.locator('#createLeadForm_currencyUomId').selectOption({ value: 'INR' });
@@ -40,7 +40,6 @@ test.describe('Create Lead - Data Parameterization', () => {
       // Country - India
       await page.locator('#createLeadForm_generalCountryGeoId').selectOption({ label: 'India' });
 
-      // wait for State dropdown to populate after Country change
       await page.waitForTimeout(1000);
 
       // count + print all State options
